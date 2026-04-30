@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — {{site}}</title>
+  <meta name="description" content="A photographic project.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body data-page="project">
+
+  <!-- Title block -->
+  <header class="project-header" data-project-header>
+    <div class="project-header-inner">
+      <div class="project-eyebrow">Project</div>
+      <h1 class="project-title" data-project-title></h1>
+      <p class="project-subtitle" data-project-subtitle></p>
+      <p class="project-description" data-project-description></p>
+      <div class="project-scroll-hint">↓  Scroll to walk it</div>
+    </div>
+  </header>
+
+  <!-- Panorama scroll container (used when project type = "panorama") -->
+  <section class="project-pano" id="project-pano">
+    <div class="project-pano-sticky">
+      <div class="project-pano-image-wrap">
+        <img class="project-pano-image" id="project-pano-image" alt="" draggable="false">
+        <div class="watermark project-pano-watermark">© <span data-owner></span></div>
+        <div class="image-shield"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery container (used when project type = "gallery") -->
+  <section class="project-gallery-wrap" id="project-gallery" style="display: none;">
+    <!-- Filled by JS — same masonry layout as the main gallery -->
+  </section>
+
+  <script src="config.js"></script>
+  <script src="photos.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

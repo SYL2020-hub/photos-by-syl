@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{site}}</title>
+  <meta name="description" content="Landscape, wildlife, and travel photography by Syl.">
+  <meta name="author" content="Syl">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Photos by Syl">
+  <meta property="og:description" content="Landscape, wildlife, and travel photography.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body data-page="landing">
+
+  <!-- Two stacked layers cross-fade between random photos -->
+  <div class="landing-bg">
+    <div class="landing-bg-layer landing-bg-layer-a" id="bg-layer-a"></div>
+    <div class="landing-bg-layer landing-bg-layer-b" id="bg-layer-b"></div>
+    <div class="landing-bg-vignette"></div>
+  </div>
+
+  <!-- Centered welcome content -->
+  <main class="landing-content">
+    <h1 class="landing-title">Photos by <em>Syl</em></h1>
+    <p class="landing-tagline" data-tagline></p>
+
+    <div class="landing-cta">
+      <a href="gallery.html" class="landing-cta-primary">Enter the gallery</a>
+      <a href="about.html" class="landing-cta-secondary">About</a>
+    </div>
+  </main>
+
+  <!-- Tiny credit line bottom-right -->
+  <div class="landing-credit">© <span data-owner></span> · <span id="landing-photo-credit"></span></div>
+
+  <script src="config.js"></script>
+  <script src="photos.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

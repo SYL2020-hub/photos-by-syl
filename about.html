@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — {{site}}</title>
+  <meta name="description" content="About the photographer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body data-page="about">
+
+  <section class="section" style="padding-top: 9rem;">
+    <div class="about">
+      <div class="about-portrait" id="about-portrait">
+        <div class="about-portrait-layer" id="portrait-layer-a"></div>
+        <div class="about-portrait-layer" id="portrait-layer-b"></div>
+      </div>
+
+      <div class="about-text">
+        <h1>An <em>eye</em> for the wild.</h1>
+        <p>
+          I'm <span data-owner></span>, an amateur photographer drawn to landscape, wildlife, and travel.
+          I enjoy capturing my journeys and holidays with a careful eye and a good camera.
+        </p>
+        <p>
+          The photographs here are organized by the color they carry, because that's how I tend to remember them:
+          not by where I was, but by what the light was doing.
+        </p>
+        <p>
+          Most images on this site are limited-resolution display copies. Originals are available for
+          print and licensing on request — reach me through the <a href="contact.html" style="border-bottom: 1px solid var(--accent);">contact page</a>.
+        </p>
+
+        <div class="about-meta">
+          <div><strong>Genres</strong>Landscape · Wildlife · Travel</div>
+          <div><strong>Based in</strong>Wherever the light is</div>
+          <div><strong>Gear</strong>Whatever's in the bag</div>
+          <div><strong>Process</strong>Wait. Watch. Sometimes press the button.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="photos.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
