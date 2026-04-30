@@ -137,6 +137,21 @@ img { max-width: 100%; display: block; }
 
 .nav-toggle { display: none; background: none; border: none; color: var(--ink); cursor: pointer; padding: 0.5rem; }
 
+/* Instagram glyph in nav — small, sits at the end of the link row */
+.nav-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-dim);
+  transition: color var(--transition);
+}
+.nav-instagram svg {
+  width: 18px;
+  height: 18px;
+}
+.nav-instagram:hover { color: var(--accent); }
+.nav-instagram::after { display: none !important; }   /* no underline animation */
+
 /* =============================================================================
    LANDING PAGE  (index.html) — viewport-only, cross-fading B&W background
    ============================================================================= */
@@ -830,8 +845,19 @@ body[data-page="landing"] .footer { display: none; }
   .gallery-band-row .masonry-item { height: 220px; }
 }
 @media (max-width: 640px) {
-  .gallery-band-row { gap: 4px; }
-  .gallery-band-row .masonry-item { height: 160px; min-width: 140px; }
+  /* On phones, switch to a 2-column grid regardless of aspect ratio.
+     This overrides the per-photo flex-basis set inline by JS. */
+  .gallery-band-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  .gallery-band-row .masonry-item {
+    flex-basis: auto !important;   /* override inline JS-set flex-basis */
+    height: auto;
+    aspect-ratio: 1 / 1;            /* square crop, looks consistent */
+    min-width: 0;
+  }
 }
 
 /* Legacy vertical masonry (used on per-album pages, lightbox initialization) */
@@ -1175,17 +1201,28 @@ body[data-page="landing"] .footer { display: none; }
   margin-bottom: 3rem;
   line-height: 1.7;
 }
-.contact-email {
-  display: inline-block;
+.contact-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
   font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--ink);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-  transition: color var(--transition), border-color var(--transition);
+  border: 1px solid var(--accent);
+  padding: 1rem 1.6rem;
+  letter-spacing: 0.04em;
+  background: rgba(20, 20, 20, 0.4);
+  transition: background var(--transition), color var(--transition);
 }
-.contact-email:hover { color: var(--accent); }
+.contact-instagram:hover {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+.contact-instagram-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
 .contact-social {
   margin-top: 4rem;
   display: flex; justify-content: center; gap: 2rem;
@@ -1281,18 +1318,55 @@ body[data-page="landing"] .footer { display: none; }
   .footer-right { text-align: center; }
 }
 @media (max-width: 640px) {
-  :root { --gutter: 1.25rem; }
-  .nav { padding: 1rem var(--gutter); }
-  .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0;
-    background: var(--bg-elev); flex-direction: column; gap: 0; padding: 1rem 0;
-    border-top: 1px solid var(--line); }
+  :root { --gutter: 1rem; }
+
+  /* Bigger nav for thumb-friendly tap targets — Apple HIG recommends 44pt min */
+  .nav {
+    padding: 1.1rem var(--gutter);
+  }
+  .nav-logo {
+    font-size: 1.35rem;             /* slightly bigger than the 1.5rem desktop */
+    gap: 0.6rem;
+  }
+  .nav-logo svg { height: 32px; width: 32px; }   /* up from 28px */
+  .nav-toggle {
+    font-size: 1.6rem;
+    padding: 0.6rem 0.4rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--bg-elev); flex-direction: column; gap: 0; padding: 0.75rem 0;
+    border-top: 1px solid var(--line);
+  }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 1rem var(--gutter); width: 100%; }
-  .nav-toggle { display: block; }
+  .nav-links a {
+    padding: 1.1rem var(--gutter);
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
   .albums { grid-template-columns: 1fr; }
   .section { padding: 4rem var(--gutter); }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 4px; }
   .about-meta { grid-template-columns: 1fr; }
+
+  /* Gallery page: reduce padding for edge-to-edge feel on phones */
+  .home-gallery-wrap { padding: 0.5rem var(--gutter) 3rem; }
+  .gallery-header { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  /* Mobile dropdown: Instagram link still works, shows as full-row tap area */
+  .nav-instagram {
+    width: 100%;
+    padding: 1.1rem var(--gutter);
+    justify-content: flex-start;
+  }
+  .nav-instagram svg { width: 22px; height: 22px; }
 }
 
 /* Disable user selection on protected images */

@@ -11,12 +11,11 @@ window.SITE_CONFIG = {
   siteName: "Photos by Syl",
   tagline: "Light, distance, and wild things.",
   ownerName: "Syl",                         // Used in copyright + watermarks
-  email: "you@example.com",                 // Replace with your real email
   copyrightYear: 2026,
 
   // ---- SOCIAL (leave blank to hide) ----------------------------------------
   social: {
-    instagram: "",                          // e.g. "yourhandle"
+    instagram: "photosby_syl",              // your Instagram handle (no @)
     flickr: "",
     "500px": ""
   },

@@ -110,6 +110,16 @@
         <circle cx="22" cy="9" r="1.4" fill="#f0ede7"/>
       </svg>`;
 
+    const igHandle = (cfg.social && cfg.social.instagram) || '';
+    const igLink = igHandle ? `
+          <a href="https://www.instagram.com/${igHandle}/" target="_blank" rel="noopener noreferrer" class="nav-instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>` : '';
+
     const navHtml = `
       <nav class="nav" role="navigation">
         <a href="index.html" class="nav-logo" aria-label="${cfg.siteName} home">
@@ -123,6 +133,7 @@
           <a href="about.html"    ${activePage === 'about'                         ? 'class="active"' : ''}>About</a>
           <a href="shop.html"     ${activePage === 'shop'                          ? 'class="active"' : ''}>Prints</a>
           <a href="contact.html"  ${activePage === 'contact'                       ? 'class="active"' : ''}>Contact</a>
+          ${igLink}
         </div>
       </nav>`;
     document.body.insertAdjacentHTML('afterbegin', navHtml);
