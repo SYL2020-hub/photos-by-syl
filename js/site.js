@@ -29,9 +29,15 @@
 
     if (cameFromLanding && activePage !== 'landing') {
       document.documentElement.classList.add('color-reveal');
-      setTimeout(() => {
+      // Hard cleanup: when the animation ends (or after the timeout, whichever
+      // first), remove the class AND any inline filter to prevent the body
+      // from being stuck with a filter stacking context on Android Chrome.
+      const cleanup = () => {
         document.documentElement.classList.remove('color-reveal');
-      }, COLOR_REVEAL_DURATION);
+        document.body.style.filter = '';
+      };
+      document.body.addEventListener('animationend', cleanup, { once: true });
+      setTimeout(cleanup, COLOR_REVEAL_DURATION + 100);
     }
 
     // Single rAF — fade in immediately on first paint, no double-frame delay
